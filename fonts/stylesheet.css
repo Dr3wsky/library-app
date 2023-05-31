@@ -1,0 +1,35 @@
+@font-face {
+  font-family: "Philosopher";
+  src: url("Philosopher.woff2") format("woff2"),
+    url("Philosopher.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Vanilla Whale";
+  src: url("VanillaWhale-Regular.woff2") format("woff2"),
+    url("VanillaWhale-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Texas Tango BOLD PERSONAL USE";
+  src: url("TexasTangoBOLDPERSONALUSE.woff2") format("woff2"),
+    url("TexasTangoBOLDPERSONALUSE.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Hack";
+  src: url("Hack-Regular.woff2") format("woff2"),
+    url("Hack-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}

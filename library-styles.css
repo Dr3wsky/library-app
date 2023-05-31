@@ -1,0 +1,324 @@
+/* CSS Reset, Globals and Custom Fonts */
+
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+:root {
+  --white: rgb(255, 255, 255);
+  --light-grey: rgb(230, 228, 228);
+  --dark-grey: rgb(98, 98, 98);
+  --black: rgb(0, 0, 0);
+  --blue-steel: rgb(88, 204, 208);
+  --green: rgb(98, 228, 65);
+  --red: rgb(215, 40, 40);
+  --spacing-xs: 1rem;
+  --spacing-s: 2rem;
+  --spacing-m: 4rem;
+  --spacing-l: 6rem;
+  --spacing-xl: 10rem;
+  --primary-font: Hack;
+  --secondary-font: Philosopher;
+  --title-font: Texas Trango;
+}
+
+@font-face {
+  font-family: Philosopher;
+  src: url("fonts/Philosopher.woff2") format("woff2"),
+    url("fonts/Philosopher.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Texas Tango;
+  src: url("fonts/TexasTangoBOLDPERSONALUSE.woff2") format("woff2"),
+    url("fonts/TexasTangoBOLDPERSONALUSE.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Hack;
+  src: url("fonts/Hack-Regular.woff2") format("woff2"),
+    url("fonts/Hack-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+  /* footer support */
+  position: relative;
+  min-height: 100%;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--light-grey);
+  color: var(--black);
+  font-family: Hack, Philosopher, "Lucida", "Roboto";
+  font-size: 1rem;
+  word-wrap: break-word;
+  /* footer support */
+  margin-bottom: 100px;
+}
+
+/* Main Styling */
+
+.header {
+  width: 100vw;
+}
+
+.title-container {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--spacing-s) var(--spacing-l);
+}
+
+.left-container {
+  flex-grow: 1;
+  position: relative;
+  width: 40vw;
+  min-width: 164px;
+  height: 100vh;
+  background-image: url("images/mountain-layers.jpg");
+  background-size: cover;
+  color: var(--primary-dark);
+}
+
+.title-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 2vw 2vw;
+}
+
+.title {
+  text-align: center;
+  font-family: "Vanilla Whale";
+  font-size: 2rem;
+}
+
+img {
+  width: 10rem;
+  padding: 10px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  color: var(--dark-grey);
+  text-align: center;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+}
+
+.am-github {
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s ease-in-out;
+}
+
+.am-github:hover {
+  transform: scale(1.25);
+} /* Pulls focus to github link when hovered */
+
+.signup-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  flex-grow: 2;
+  width: 60vw;
+  background-color: var(--primary-light);
+}
+
+.blurb {
+  color: var(--primary-dark);
+  font-family: var(--primary-font);
+  font-weight: bold;
+  padding: 2vw 4vw 2vw 2vw;
+  font-size: 1.25rem;
+}
+
+em {
+  font-family: var(--secondary-font);
+  font-weight: bolder;
+}
+
+.input-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: white;
+  padding: 3rem 2vw 3rem 2vw;
+  gap: 1rem;
+  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.12);
+}
+
+.input-container p {
+  font-family: var(--secondary-font);
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-style: italic;
+  margin-bottom: 2rem;
+}
+
+form {
+  display: flex;
+  width: 60vw;
+  flex-flow: row wrap;
+  gap: 3rem;
+  padding-right: 4.5rem;
+  font-size: 1rem;
+}
+
+label {
+  position: relative;
+  width: 15rem;
+  margin-bottom: 15px;
+}
+
+a {
+  text-decoration: none;
+  color: var(--secondary-light);
+}
+
+input {
+  width: 15rem;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 2px solid rgb(214, 211, 211);
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+/* Modifiers for form input actions and feedback */
+input:focus {
+  border: none;
+  box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.342);
+  outline: none;
+  border: 2px solid rgb(74, 202, 198);
+}
+
+.hide-pseudo-valid:focus {
+  outline: none;
+  box-shadow: none;
+  box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.342);
+  border: 2px solid rgb(34, 238, 34);
+}
+
+.hide-pseudo-invalid:focus {
+  outline: none;
+  box-shadow: none;
+  box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.342);
+  border: 2px solid red;
+}
+
+.invalid {
+  border: 2px solid red;
+}
+
+.valid {
+  border: 2px solid rgb(34, 238, 34);
+}
+
+#pwd-error {
+  display: flex;
+  flex-direction: column;
+}
+.error {
+  font-family: var(--primary-font);
+  font-size: 0.8rem;
+  color: rgb(255, 69, 100);
+  position: absolute;
+  margin-top: 0.2rem;
+}
+
+.submit-container {
+  padding: 2rem 2rem;
+  font-size: 1.25rem;
+}
+
+button[type="submit"] {
+  font-family: inherit;
+  padding: 0.9rem 1.5rem;
+  font-size: 1.2rem;
+  background-color: var(--primary-dark);
+  color: var(--primary-light);
+  border: none;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.253);
+  transition: transform 0.075s ease-in-out;
+}
+
+button[type="submit"]:hover {
+  background-color: rgba(58, 102, 101, 0.932);
+  transform: scale(1.1);
+}
+
+button[type="submit"]:active {
+  transform: scale(0.9);
+}
+
+.submit-container p {
+  padding-top: 1rem;
+  padding-left: 0.25rem;
+}
+
+/* Media layout for small screen viewing */
+@media screen and (max-width: 1000px) {
+  .main {
+    flex-direction: column;
+    min-width: 125px;
+  }
+  .left-container {
+    width: 100vw;
+    height: 15rem;
+  }
+
+  .signup-container,
+  form,
+  .input-container {
+    width: 100vw;
+    justify-content: center;
+  }
+
+  .blurb {
+    padding-top: 1rem;
+    text-align: center;
+  }
+
+  form {
+    gap: 1rem;
+  }
+
+  .input-container,
+  form,
+  .submit-container {
+    width: 100vw;
+    justify-content: center;
+    padding-right: 2rem;
+    text-align: center;
+  }
+}
