@@ -90,6 +90,7 @@ body {
 .btn {
   border-radius: var(--border-radius);
   padding: var(--spacing-xs) var(--spacing-s);
+  transition: transform 0.1s ease-in-out;
 }
 
 .btn:hover {
@@ -97,6 +98,10 @@ body {
   color: var(--blue-steel);
   background-color: var(--dark-grey);
   cursor: pointer;
+}
+
+.btn:active {
+  transform: scale(0.9);
 }
 
 /* HEADER Styling */
@@ -112,10 +117,47 @@ body {
   justify-content: space-between;
 }
 
-.login {
+.btn-login {
   font-size: 1.15rem;
   font-weight: 600;
   border: solid 2px var(--dark-grey);
+}
+
+.title {
+  font-weight: 900;
+}
+
+/* MAIN */
+
+.main {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: var(--spacing-s);
+}
+
+.btn-add {
+  font-size: 1.5rem;
+  font-weight: 600;
+  border: none;
+  background-color: var(--light-grey);
+}
+
+.btn-add:hover {
+  background-color: var(--blue-steel);
+  color: var(--light-grey);
+}
+
+.books-grid {
+  display: grid;
+  padding-top: var(--spacing-s);
+}
+
+.book-card {
+  background-color: var(--blue-steel);
+  height: 2rem;
+  width: 2rem;
 }
 
 /* FOOTER */
