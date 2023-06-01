@@ -229,24 +229,23 @@ a {
   left: 0px;
   background-color: var(--dark-grey);
   opacity: 80%;
-  display: visible;
+  display: none;
   transition: 200ms ease-in-out;
 }
 
 .modal {
   position: absolute;
   z-index: 1;
-  top: 10%;
+  top: 50%;
   left: 50%;
   width: 500px;
-  margin-left: -250px;
   border-radius: var(--border-radius);
   background-color: var(--blue-steel);
   box-shadow: var(--shadow);
   text-align: center;
   padding: var(--spacing-xs);
-  /* transform: translate(-50%, -50%) scale(0);
-  transition: 200ms ease-in-out; */
+  transform: translate(-50%, -50%) scale(0);
+  transition: 200ms ease-in-out;
 }
 
 .book-form {
@@ -288,6 +287,6 @@ form {
   background-color: var(--dark-grey);
 }
 
-/* .modal.active {
+.modal.active {
   transform: translate(-50%, -50%) scale(1);
-} */
+}

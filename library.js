@@ -1,16 +1,17 @@
-// DOM Access
+// DOM Access and Variable Assignment
 const read = document.querySelectorAll("#btn-read");
+const ele = document.querySelector(":root");
 const redColor = getComputedStyle(ele).getPropertyValue("--red");
 const greenColor = getComputedStyle(ele).getPropertyValue("--green");
-const addBook = document.getElementById("addBookBtn");
+const addBookBtn = document.getElementById("addBookBtn");
 const submitBtn = document.getElementById("submitBtn");
-const ele = document.querySelector(":root");
 const addBookModal = document.getElementById("addBookModal");
 const overlay = document.querySelector(".overlay");
 
 let readStatus = true;
 
-// functions
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+// Function Assignment
 function toggleRead(reads) {
   if (readStatus) {
     reads.classList.remove("not-read");
@@ -22,20 +23,30 @@ function toggleRead(reads) {
     reads.innerHTML = "NOT READ";
   }
   console.log(readStatus);
-}
+} //Needs to be adjusted to take in initial readStatus value
 
-function openBookModal() {
+const openBookModal = () => {
   overlay.style.display = "block";
   addBookModal.classList.add("active");
-}
+};
 
-function closeModal(e) {
+const closeModal = () => {
+  addBookModal.classList.remove("active");
+  overlay.style.display = "none";
+};
+
+const checkKeyPress = (e) => {
+  console.log(e);
   if (e.key === "Escape") {
-    addBookModal.classList.remove("active");
-    overlay.style.display = "none";
+    closeModal();
   }
-}
+};
 
+const newBookInfo = (e) => {
+  console.count("done");
+};
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 // Event Listeners and Handlers
 read.forEach((reads) =>
   reads.addEventListener("click", (e) => {
@@ -44,5 +55,7 @@ read.forEach((reads) =>
   })
 );
 
-document.addEventListener("keyup", closeModal);
-addBook.addEventListener("click", openBookModal);
+addBookBtn.onclick = openBookModal;
+submitBtn.onclick = newBookInfo;
+window.onkeyup = checkKeyPress;
+overlay.onclick = closeModal;
