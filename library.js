@@ -1,8 +1,13 @@
 // DOM Access
 const read = document.querySelectorAll("#btn-read");
-const ele = document.querySelector(":root");
 const redColor = getComputedStyle(ele).getPropertyValue("--red");
 const greenColor = getComputedStyle(ele).getPropertyValue("--green");
+const addBook = document.getElementById("addBookBtn");
+const submitBtn = document.getElementById("submitBtn");
+const ele = document.querySelector(":root");
+const addBookModal = document.getElementById("addBookModal");
+const overlay = document.querySelector(".overlay");
+
 let readStatus = true;
 
 // functions
@@ -19,10 +24,25 @@ function toggleRead(reads) {
   console.log(readStatus);
 }
 
-// Event Listeners
+function openBookModal() {
+  overlay.style.display = "block";
+  addBookModal.classList.add("active");
+}
+
+function closeModal(e) {
+  if (e.key === "Escape") {
+    addBookModal.classList.remove("active");
+    overlay.style.display = "none";
+  }
+}
+
+// Event Listeners and Handlers
 read.forEach((reads) =>
   reads.addEventListener("click", (e) => {
     toggleRead(reads);
     readStatus = !readStatus;
   })
 );
+
+document.addEventListener("keyup", closeModal);
+addBook.addEventListener("click", openBookModal);

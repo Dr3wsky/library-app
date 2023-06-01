@@ -51,5 +51,40 @@
         </script></a
       >
     </footer>
+
+    <div class="modal" id="addBookModal">
+      <form class="book-form" id="bookForm">
+        <h2>New Book</h2>
+        <input
+          class="input"
+          type="text"
+          id="title"
+          required
+          placeholder="Book Title"
+          maxlength="100"
+        />
+        <p class="error-msg" id="titleError"></p>
+        <input
+          class="input"
+          type="text"
+          id="Author"
+          required
+          placeholder="Author"
+          maxlength="100"
+        />
+        <p class="error-msg" id="authorError"></p>
+        <input class="input" type="number" id="pages" required max="10000" />
+        <label for="isRead"
+          >Has this book been read?
+          <input class="is-read" type="checkbox" id="isRead"
+        /></label>
+        <button class="btn btn-add" type="submit">
+          <i class="bx bx-book-add"></i> Add
+        </button>
+      </form>
+    </div>
+    <div class="overlay"></div>
+
+    <!-- <div class="cover"></div> -->
   </body>
 </html>
