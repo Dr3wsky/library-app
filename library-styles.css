@@ -12,18 +12,18 @@
 :root {
   --white: rgb(255, 255, 255);
   --light-grey: rgb(230, 228, 228);
-  --dark-grey: rgb(121, 121, 121);
+  --dark-grey: rgba(150, 150, 150, 0.91);
   --black: rgb(0, 0, 0);
-  --blue-steel: rgb(88, 204, 208);
+  --blue-steel: rgb(52, 214, 220);
   --green: rgb(98, 228, 65);
-  --red: rgb(215, 40, 40);
+  --red: rgb(249, 55, 55);
   --shadow: rgba(0, 0, 0, 0.218) 0px 1px 4px;
-  --btn-shadow: 6px 6px 6px var(--blue-steel);
+  --btn-shadow: var(--blue-steel) 6px 6px 6px;
   --border-radius: 6px;
   --container-width: 1600px;
   --spacing-xs: 1rem;
   --spacing-s: 2rem;
-  --spacing-m: 4rem;
+  --spacing-m: 3rem;
   --spacing-l: 6rem;
   --spacing-xl: 10rem;
   --primary-font: Hack;
@@ -88,15 +88,14 @@ body {
 }
 
 .btn {
+  background-color: var(--light-grey);
   border-radius: var(--border-radius);
+  border: none;
   padding: var(--spacing-xs) var(--spacing-s);
   transition: transform 0.1s ease-in-out;
 }
 
 .btn:hover {
-  box-shadow: var(--btn-shadow);
-  color: var(--blue-steel);
-  background-color: var(--dark-grey);
   cursor: pointer;
 }
 
@@ -120,7 +119,12 @@ body {
 .btn-login {
   font-size: 1.15rem;
   font-weight: 600;
-  border: solid 2px var(--dark-grey);
+  box-shadow: var(--shadow);
+}
+
+.btn-login:hover {
+  box-shadow: var(--btn-shadow);
+  background-color: var(--dark-grey);
 }
 
 .label {
@@ -141,28 +145,51 @@ body {
   font-size: 1.5rem;
   font-weight: 600;
   border: none;
-  background-color: var(--light-grey);
 }
 
 .btn-add:hover {
   background-color: var(--blue-steel);
   color: var(--light-grey);
-  box-shadow: none;
 }
 
 .books-grid {
+  width: 100%;
   display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   gap: var(--spacing-m);
-  background-color: aqua;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  border: solid red 1px;
   padding-top: var(--spacing-s);
 }
 
 .book-card {
-  border: green solid 3px;
-  width: 300px;
-  height: 200px;
+  background-color: var(--blue-steel);
+  border: 2px solid var(--light-grey);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-xs);
+}
+
+.book-info {
+  margin-top: var(--spacing-xs);
+}
+
+#btn-delete,
+#btn-read {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+#btn-delete:hover {
+  background-color: var(--red);
+}
+
+.read {
+  background-color: var(--green);
+}
+
+.not-read {
+  background-color: var(--red);
 }
 
 /* FOOTER */
