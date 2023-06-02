@@ -170,12 +170,8 @@ body {
 }
 
 /* Change When implement readStatus Default is reb bg, then apply .read */
-.is-read {
+.read {
   background-color: var(--green);
-}
-
-.not-read {
-  background-color: var(--red);
 }
 
 /* FOOTER */

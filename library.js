@@ -1,12 +1,12 @@
 // DOM Access and Variable Assignment
-const booksGrid = document.querySelector(".book-grid");
-const read = document.querySelectorAll("#btnRead");
+const booksGrid = document.querySelector(".books-grid");
+const read = document.querySelectorAll("#btn-read");
 const ele = document.querySelector(":root");
 const redColor = getComputedStyle(ele).getPropertyValue("--red");
 const greenColor = getComputedStyle(ele).getPropertyValue("--green");
-const addBookBtn = document.getElementById("addBookBtn");
-const submitBtn = document.getElementById("submitBtn");
-const addBookModal = document.getElementById("addBookModal");
+const addBookBtn = document.getElementById("add-book-btn");
+const submitBtn = document.getElementById("submit-btn");
+const addBookModal = document.getElementById("add-book-modal");
 const overlay = document.querySelector(".overlay");
 
 // Tester Books
@@ -55,11 +55,11 @@ const newCard = (book, library) => {
   readBtn.classList.add("btn", "book-info");
   readBtn.setAttribute("id", "btnRead");
   delBtn.classList.add("btn", "book-info");
-  delBtn.setAttribute("id", "btnDelete");
+  delBtn.setAttribute("id", "btn-delete");
 
   // insert content
   title.textContent = `${book.title}`;
-  author.textContent = `${book.author}`;
+  author.textContent = `By: ${book.author}`;
   pages.textContent = `${book.pages} pages`;
   toggleRead(readBtn, book);
   delBtn.textContent = "DELETE";
