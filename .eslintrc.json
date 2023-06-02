@@ -1,5 +1,4 @@
 {
-  "parser": "@babel/eslint-parser",
   "env": {
     "browser": true,
     "commonjs": true,
@@ -8,8 +7,12 @@
   "extends": "airbnb-base",
   "overrides": [],
   "parserOptions": {
-    "ecmaVersion": "latest"
+    "parser": "@babel/eslint-parser",
+    "requireConfigFile": false, // <== ADD THIS
+    "ecmaVersion": 2020, // Allows for the parsing of modern ECMAScript features
+    "sourceType": "module" // Allows for the use of import
   },
+  "plugins": ["html", "css"],
   "rules": {
     "no-console": "off",
     "quotes": ["error", "single"]
