@@ -88,6 +88,8 @@ body {
 }
 
 .btn {
+  font-size: 1.15rem;
+  font-weight: 600;
   background-color: var(--light-grey);
   border-radius: var(--border-radius);
   border: none;
@@ -116,19 +118,10 @@ body {
   justify-content: space-between;
 }
 
-.btn-login {
-  font-size: 1.15rem;
-  font-weight: 600;
-  box-shadow: var(--shadow);
-}
-
 .btn-login:hover {
   box-shadow: var(--btn-shadow);
   background-color: var(--dark-grey);
-}
-
-.label {
-  font-weight: bolder;
+  color: var(--blue-steel);
 }
 
 /* MAIN */
@@ -143,8 +136,6 @@ body {
 
 .btn-add {
   font-size: 1.5rem;
-  font-weight: 600;
-  border: none;
 }
 
 .btn-add:hover {
@@ -155,7 +146,7 @@ body {
 .books-grid {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: var(--spacing-m);
   padding-top: var(--spacing-s);
 }
@@ -174,17 +165,12 @@ body {
   margin-top: var(--spacing-xs);
 }
 
-#btn-delete,
-#btn-read {
-  font-size: 1.1rem;
-  font-weight: 600;
-}
-
 #btn-delete:hover {
   background-color: var(--red);
 }
 
-.read {
+/* Change When implement readStatus Default is reb bg, then apply .read */
+.is-read {
   background-color: var(--green);
 }
 
@@ -248,6 +234,11 @@ a {
   transition: 200ms ease-in-out;
 }
 
+.modal.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Form Styling */
 .book-form {
   display: flex;
   flex-direction: column;
@@ -271,6 +262,10 @@ form {
   border: none;
 }
 
+.input:focus {
+  outline: none;
+}
+
 [type="checkbox"] {
   margin: var(--spacing-xs) var(--spacing-xs) var(--spacing-xs) 0;
   vertical-align: middle;
@@ -285,8 +280,4 @@ form {
 .btn-submit:hover {
   color: var(--blue-steel);
   background-color: var(--dark-grey);
-}
-
-.modal.active {
-  transform: translate(-50%, -50%) scale(1);
 }
