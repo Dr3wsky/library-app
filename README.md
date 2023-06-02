@@ -1,9 +1,10 @@
 # sign-up-form
 - Focusing on clean, modular CSS with limited extra rules.
+- Implementing both function declarations and expressions based on requirement in code.
 
 To Do:
-- Add modal form for adding new book.
-- JS to make modal pop-up on new book add.
-- object constructor for new book.
-- make new book add card with book info ***
-- Assign read status for each book with toggle
+- Add event listener for read and delete buttons
+	- Need to somehow associate the event listener with the book / id, to delete the right one.
+- make read button toggle readStatus
+- make delete button delete card
+- make checkLibrary() to check if book has already been added.

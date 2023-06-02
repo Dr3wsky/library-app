@@ -16,7 +16,7 @@ book3 = new Book(3, "Lord of the RIngs", "JRR Tolkein", 955, false);
 book4 = new Book(4, "1984", "Geroge Orwell", 343, true);
 
 let myLibrary = [];
-let readStatus = true;
+let numBooks = 0;
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 // Data Structure and objects
@@ -36,9 +36,18 @@ function Book(id, title, author, pages, readStatus) {
   };
 }
 
+function getBookFromInput() {
+  const id = myLibrary.length;
+  const title = document.getElementById("title").value;
+  const author = document.getElementById("author").value;
+  const pages = document.getElementById("pages").value;
+  const isRead = document.getElementById("is-read").checked;
+  return new Book(id, title, author, pages, isRead);
+}
+
 // UI and Actions
 // New Book info and creating cards
-const newCard = (book, library) => {
+function makeNewCard(book) {
   // make elements
   const bookCard = document.createElement("div");
   const title = document.createElement("div");
@@ -65,14 +74,13 @@ const newCard = (book, library) => {
   delBtn.textContent = "DELETE";
 
   // Append information
-  library.push(book);
   bookCard.appendChild(title);
   bookCard.appendChild(author);
   bookCard.appendChild(pages);
   bookCard.appendChild(readBtn);
   bookCard.appendChild(delBtn);
   booksGrid.appendChild(bookCard);
-};
+}
 
 function toggleRead(cardBtn, book) {
   if (book.readStatus) {
@@ -83,10 +91,9 @@ function toggleRead(cardBtn, book) {
     cardBtn.style.backgroundColor = redColor;
     cardBtn.innerHTML = "NOT READ";
   }
-  console.log(book.readStatus);
 }
 
-// Modal events and animations
+// Modal events and actions
 const openBookModal = () => {
   overlay.style.display = "block";
   addBookModal.classList.add("active");
@@ -104,17 +111,25 @@ const checkKeyPress = (e) => {
   }
 };
 
+function addBook(e) {
+  e.preventDefault();
+  const newBook = getBookFromInput();
+  myLibrary.push(newBook);
+  makeNewCard(newBook, myLibrary);
+  closeModal();
+}
+
+const deleteBook = () => {};
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 // Event Listeners and Handlers
-read.forEach((reads) =>
-  reads.addEventListener("click", (e) => {
-    toggleRead(reads);
-    readStatus = !readStatus;
-  })
-);
+// read.forEach((reads) =>
+//   reads.addEventListener("click", (e) => {
+//     toggleRead(reads);
+//   })
+// );
 
 // Handle Form info and create book
-// submitBtn.onclick = newBookInfo;
+submitBtn.onclick = addBook;
 
 // Interact w. buttons and modal control
 addBookBtn.onclick = openBookModal;
