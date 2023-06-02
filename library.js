@@ -10,7 +10,7 @@ const overlay = document.querySelector(".overlay");
 
 let readStatus = true;
 
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 // Function Assignment
 function toggleRead(reads) {
   if (readStatus) {
@@ -23,7 +23,7 @@ function toggleRead(reads) {
     reads.innerHTML = "NOT READ";
   }
   console.log(readStatus);
-} //Needs to be adjusted to take in initial readStatus value
+} // Needs to be adjusted to take in initial readStatus value
 
 const openBookModal = () => {
   overlay.style.display = "block";
@@ -46,7 +46,7 @@ const newBookInfo = (e) => {
   console.count("done");
 };
 
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 // Event Listeners and Handlers
 read.forEach((reads) =>
   reads.addEventListener("click", (e) => {

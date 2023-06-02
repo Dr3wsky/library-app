@@ -12,9 +12,9 @@
     "ecmaVersion": 2020, // Allows for the parsing of modern ECMAScript features
     "sourceType": "module" // Allows for the use of import
   },
-  "plugins": ["html", "css"],
+  "plugins": ["html", "css", "javascript"],
   "rules": {
     "no-console": "off",
-    "quotes": ["error", "single"]
+    "quotes": ["error", "double"]
   }
 }
