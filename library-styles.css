@@ -165,14 +165,20 @@ body {
   margin-top: var(--spacing-xs);
 }
 
-#btn-delete:hover {
+.btn-read {
   background-color: var(--red);
 }
 
-/* Change When implement readStatus Default is reb bg, then apply .read */
+/* Precedes styling when book is read */
 .read {
   background-color: var(--green);
 }
+
+.btn-del:hover {
+  color: var(--red);
+}
+
+/* Change When implement readStatus Default is reb bg, then apply .read */
 
 /* FOOTER */
 .footer {

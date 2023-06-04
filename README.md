@@ -3,8 +3,7 @@
 - Implementing both function declarations and expressions based on requirement in code.
 
 To Do:
-- Add event listener for read and delete buttons
-	- Need to somehow associate the event listener with the book / id, to delete the right one.
-- make read button toggle readStatus
-- make delete button delete card
+- Modigy delete function to remove book from library array
+	- renumber books with nre ID order and update ID on each card for handling
 - make checkLibrary() to check if book has already been added.
+	- Add error message forif book already exists and numbers must be valid 

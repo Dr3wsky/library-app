@@ -37,15 +37,14 @@ function Book(id, title, author, pages, readStatus) {
 }
 
 function getBookFromInput() {
-  const id = myLibrary.length;
+  let id = myLibrary.length;
   const title = document.getElementById("title").value;
   const author = document.getElementById("author").value;
   const pages = document.getElementById("pages").value;
-  const isRead = document.getElementById("is-read").checked;
+  let isRead = document.getElementById("is-read").checked;
   return new Book(id, title, author, pages, isRead);
 }
 
-// UI and Actions
 // New Book info and creating cards
 function makeNewCard(book) {
   // make elements
@@ -56,21 +55,27 @@ function makeNewCard(book) {
   const readBtn = document.createElement("button");
   const delBtn = document.createElement("button");
 
-  // assign css
+  // assign css & event listeners
   bookCard.classList.add("book-card");
+  bookCard.setAttribute("id", `${book.id}`);
   title.classList.add("book-info", "title");
   author.classList.add("book-info", "author");
   pages.classList.add("book-info", "pages");
-  readBtn.classList.add("btn", "book-info");
-  readBtn.setAttribute("id", "btnRead");
-  delBtn.classList.add("btn", "book-info");
-  delBtn.setAttribute("id", "btn-delete");
+  readBtn.classList.add("btn", "book-info", "btn-read");
+  readBtn.addEventListener("click", toggleRead);
+  delBtn.classList.add("btn", "book-info", "btn-del");
+  delBtn.addEventListener("click", deleteCard);
 
   // insert content
   title.textContent = `${book.title}`;
   author.textContent = `By: ${book.author}`;
   pages.textContent = `${book.pages} pages`;
-  toggleRead(readBtn, book);
+  if (book.readStatus) {
+    readBtn.classList.add("read");
+    readBtn.innerHTML = "READ";
+  } else {
+    readBtn.innerHTML = "NOT READ";
+  }
   delBtn.textContent = "DELETE";
 
   // Append information
@@ -82,14 +87,29 @@ function makeNewCard(book) {
   booksGrid.appendChild(bookCard);
 }
 
-function toggleRead(cardBtn, book) {
-  if (book.readStatus) {
-    cardBtn.classList.add("read");
-    cardBtn.innerHTML = "READ";
+function deleteCard(e) {
+  const id = e.target.parentElement.id;
+  booksGrid.removeChild(e.target.parentElement);
+  // updateLibrary(id);
+}
+
+function updateLibrary(id) {
+  //Use array method to delete specified ID from library array
+  //make sure is it not blank??
+  //re-number all libraries
+  //update the book card ID's?? to match
+}
+
+function toggleRead(e) {
+  const id = e.target.parentElement.id;
+  if (myLibrary[id].readStatus) {
+    e.currentTarget.classList.remove("read");
+    e.currentTarget.innerHTML = "NOT READ";
+    myLibrary[id].readStatus = false;
   } else {
-    cardBtn.classList.remove("read");
-    cardBtn.style.backgroundColor = redColor;
-    cardBtn.innerHTML = "NOT READ";
+    e.currentTarget.classList.add("read");
+    e.currentTarget.innerHTML = "READ";
+    myLibrary[id].readStatus = true;
   }
 }
 
@@ -116,18 +136,11 @@ function addBook(e) {
   const newBook = getBookFromInput();
   myLibrary.push(newBook);
   makeNewCard(newBook, myLibrary);
+  // clear form info!!
   closeModal();
 }
 
-const deleteBook = () => {};
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
-// Event Listeners and Handlers
-// read.forEach((reads) =>
-//   reads.addEventListener("click", (e) => {
-//     toggleRead(reads);
-//   })
-// );
-
 // Handle Form info and create book
 submitBtn.onclick = addBook;
 
