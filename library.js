@@ -155,6 +155,7 @@ function addBook(e) {
     }
     myLibrary.push(newBook);
     makeNewCard(newBook, myLibrary);
+    e.preventDefault();
     closeModal();
   }
 }
