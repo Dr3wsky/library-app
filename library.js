@@ -17,7 +17,7 @@ const book3 = new Book(2, "Project Hail Mary", "The Martian", 54, false);
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 // Data Structure and objects
-// Object constructor
+// Object constructormy
 function Book(id, title, author, pages, readStatus) {
   this.id = id;
   this.title = title;
@@ -87,14 +87,16 @@ function makeNewCard(book) {
 function deleteCard(e) {
   const id = e.target.parentElement.id;
   booksGrid.removeChild(e.target.parentElement);
-  // updateLibrary(id);
+  const removedBook = myLibrary.splice(id, 1);
+  updateLibrary(id);
 }
 
 function updateLibrary(id) {
-  //Use array method to delete specified ID from library array
-  //make sure is it not blank??
-  //re-number all libraries
-  //update the book card ID's?? to match
+  for (let i = +id; i < myLibrary.length; i++) {
+    myLibrary[i].id = i;
+    let tempCard = document.getElementById(`${i + 1}`);
+    tempCard.setAttribute("id", `${i}`);
+  }
 }
 
 function toggleRead(e) {
