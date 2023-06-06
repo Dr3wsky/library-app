@@ -1,4 +1,4 @@
-// DOM Access and Variable Assignment
+// DOM Access and Global Variable Assignment for func declarations
 const booksGrid = document.querySelector(".books-grid");
 const ele = document.querySelector(":root");
 const redColor = getComputedStyle(ele).getPropertyValue("--red");
@@ -8,16 +8,15 @@ const submitBtn = document.getElementById("submit-btn");
 const addBookModal = document.getElementById("add-book-modal");
 const overlay = document.querySelector(".overlay");
 const formInput = document.getElementById("book-form");
-
-let myLibrary = [];
-
-const book1 = new Book(0, "Hary Potter", "JK Rowling", 543, true);
-const book2 = new Book(1, "The Hobbit", "JRR Tolkein", 566, true);
-const book3 = new Book(2, "Project Hail Mary", "The Martian", 54, false);
+const titleError = document.getElementById("title-error");
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 // Data Structure and objects
-// Object constructormy
+
+// Initialize blank library
+let myLibrary = [];
+
+// Object constructor for new book obj
 function Book(id, title, author, pages, readStatus) {
   this.id = id;
   this.title = title;
@@ -33,16 +32,25 @@ function Book(id, title, author, pages, readStatus) {
   };
 }
 
+// Obtain form submission data
 function getBookFromInput() {
   let id = myLibrary.length;
   const title = document.getElementById("title").value;
   const author = document.getElementById("author").value;
   const pages = document.getElementById("pages").value;
   let isRead = document.getElementById("is-read").checked;
+  if (checkDuplicate(title)) {
+    titleError.textContent = "This book already exists in your library";
+    titleError.classList.add("error");
+    return;
+  } else {
+    titleError.textContent = "";
+    titleError.classList.remove("error");
+  }
   return new Book(id, title, author, pages, isRead);
 }
 
-// New Book info and creating cards
+// Make new book card display form new book obj
 function makeNewCard(book) {
   // make elements
   const bookCard = document.createElement("div");
@@ -87,7 +95,7 @@ function makeNewCard(book) {
 function deleteCard(e) {
   const id = e.target.parentElement.id;
   booksGrid.removeChild(e.target.parentElement);
-  const removedBook = myLibrary.splice(id, 1);
+  const removedBook = myLibrary.splice(id, 1); // Update Library indexes and book card IDs
   updateLibrary(id);
 }
 
@@ -99,6 +107,13 @@ function updateLibrary(id) {
   }
 }
 
+function checkDuplicate(newTitle) {
+  return myLibrary.some(
+    (book) => book.title.toLowerCase() === newTitle.toLowerCase()
+  );
+}
+
+// Change text and color of read button
 function toggleRead(e) {
   const id = e.target.parentElement.id;
   if (myLibrary[id].readStatus) {
@@ -121,6 +136,7 @@ const openBookModal = () => {
 const closeModal = () => {
   addBookModal.classList.remove("active");
   overlay.style.display = "none";
+  titleError.textContent = "";
   formInput.reset(); // Clears form data when modal closes
 };
 
@@ -131,9 +147,12 @@ const checkKeyPress = (e) => {
   }
 };
 
+// Function calls for full functionality
 function addBook(e) {
-  e.preventDefault();
   const newBook = getBookFromInput();
+  if (titleError.textContent !== "") {
+    return;
+  }
   myLibrary.push(newBook);
   makeNewCard(newBook, myLibrary);
   closeModal();
