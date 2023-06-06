@@ -1,6 +1,5 @@
 // DOM Access and Variable Assignment
 const booksGrid = document.querySelector(".books-grid");
-const read = document.querySelectorAll("#btn-read");
 const ele = document.querySelector(":root");
 const redColor = getComputedStyle(ele).getPropertyValue("--red");
 const greenColor = getComputedStyle(ele).getPropertyValue("--green");
@@ -8,15 +7,13 @@ const addBookBtn = document.getElementById("add-book-btn");
 const submitBtn = document.getElementById("submit-btn");
 const addBookModal = document.getElementById("add-book-modal");
 const overlay = document.querySelector(".overlay");
-
-// Tester Books
-book1 = new Book(1, "The Dark Tower", "Stephen King", 567, false);
-book2 = new Book(2, "Harry Potter", "JK Rowling", 466, true);
-book3 = new Book(3, "Lord of the RIngs", "JRR Tolkein", 955, false);
-book4 = new Book(4, "1984", "Geroge Orwell", 343, true);
+const formInput = document.getElementById("book-form");
 
 let myLibrary = [];
-let numBooks = 0;
+
+const book1 = new Book(0, "Hary Potter", "JK Rowling", 543, true);
+const book2 = new Book(1, "The Hobbit", "JRR Tolkein", 566, true);
+const book3 = new Book(2, "Project Hail Mary", "The Martian", 54, false);
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 // Data Structure and objects
@@ -122,6 +119,7 @@ const openBookModal = () => {
 const closeModal = () => {
   addBookModal.classList.remove("active");
   overlay.style.display = "none";
+  formInput.reset(); // Clears form data when modal closes
 };
 
 const checkKeyPress = (e) => {
@@ -136,7 +134,6 @@ function addBook(e) {
   const newBook = getBookFromInput();
   myLibrary.push(newBook);
   makeNewCard(newBook, myLibrary);
-  // clear form info!!
   closeModal();
 }
 
