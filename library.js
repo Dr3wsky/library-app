@@ -8,6 +8,7 @@ const submitBtn = document.getElementById("submit-btn");
 const addBookModal = document.getElementById("add-book-modal");
 const overlay = document.querySelector(".overlay");
 const formInput = document.getElementById("book-form");
+const title = document.getElementById("title");
 const titleError = document.getElementById("title-error");
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
@@ -39,14 +40,6 @@ function getBookFromInput() {
   const author = document.getElementById("author").value;
   const pages = document.getElementById("pages").value;
   let isRead = document.getElementById("is-read").checked;
-  if (checkDuplicate(title)) {
-    titleError.textContent = "This book already exists in your library";
-    titleError.classList.add("error");
-    return;
-  } else {
-    titleError.textContent = "";
-    titleError.classList.remove("error");
-  }
   return new Book(id, title, author, pages, isRead);
 }
 
@@ -149,13 +142,21 @@ const checkKeyPress = (e) => {
 
 // Function calls for full functionality
 function addBook(e) {
-  const newBook = getBookFromInput();
-  if (titleError.textContent !== "") {
-    return;
+  if (formInput.checkValidity()) {
+    const newBook = getBookFromInput();
+    if (checkDuplicate(newBook.title)) {
+      titleError.textContent = "This book already exists in your library";
+      title.classList.add("error");
+      e.preventDefault();
+      return;
+    } else {
+      titleError.textContent = "";
+      title.classList.remove("error");
+    }
+    myLibrary.push(newBook);
+    makeNewCard(newBook, myLibrary);
+    closeModal();
   }
-  myLibrary.push(newBook);
-  makeNewCard(newBook, myLibrary);
-  closeModal();
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
