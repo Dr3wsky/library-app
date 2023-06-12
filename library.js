@@ -15,7 +15,7 @@ const titleError = document.getElementById("title-error");
 // Data Structure and objects
 
 // Initialize blank library
-let myLibrary = [];
+var myLibrary = [];
 
 // Object constructor for new book obj
 function Book(id, title, author, pages, readStatus) {
@@ -35,12 +35,12 @@ function Book(id, title, author, pages, readStatus) {
 
 // Obtain form submission data
 function getBookFromInput() {
-  let id = myLibrary.length;
+  let bookId = myLibrary.length;
   const title = document.getElementById("title").value;
   const author = document.getElementById("author").value;
   const pages = document.getElementById("pages").value;
   let isRead = document.getElementById("is-read").checked;
-  return new Book(id, title, author, pages, isRead);
+  return new Book(bookId, title, author, pages, isRead);
 }
 
 // Make new book card display form new book obj
@@ -86,14 +86,14 @@ function makeNewCard(book) {
 }
 
 function deleteCard(e) {
-  const id = e.target.parentElement.id;
+  const bookId = e.target.parentElement.id;
   booksGrid.removeChild(e.target.parentElement);
-  const removedBook = myLibrary.splice(id, 1); // Update Library indexes and book card IDs
-  updateLibrary(id);
+  const removedBook = myLibrary.splice(bookId, 1); // Update Library indexes and book card IDs
+  updateLibrary(bookId);
 }
 
-function updateLibrary(id) {
-  for (let i = +id; i < myLibrary.length; i++) {
+function updateLibrary(bookId) {
+  for (let i = +bookId; i < myLibrary.length; i++) {
     myLibrary[i].id = i;
     let tempCard = document.getElementById(`${i + 1}`);
     tempCard.setAttribute("id", `${i}`);
@@ -108,15 +108,15 @@ function checkDuplicate(newTitle) {
 
 // Change text and color of read button
 function toggleRead(e) {
-  const id = e.target.parentElement.id;
-  if (myLibrary[id].readStatus) {
+  const bookId = e.target.parentElement.id;
+  if (myLibrary[bookId].readStatus) {
     e.currentTarget.classList.remove("read");
     e.currentTarget.innerHTML = "NOT READ";
-    myLibrary[id].readStatus = false;
+    myLibrary[bookId].readStatus = false;
   } else {
     e.currentTarget.classList.add("read");
     e.currentTarget.innerHTML = "READ";
-    myLibrary[id].readStatus = true;
+    myLibrary[bookId].readStatus = true;
   }
 }
 
