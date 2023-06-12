@@ -1,6 +1,6 @@
 # The Odin Project - JavaScript Fullstack Pathway
 
-## ProjectL: Library
+## Project: Library
 
 A small library app built with **HTML**, **CSS** and **JavaScript**.
 This project is from the Odin Project's Full Stack Develloper [curriculum](https://www.theodinproject.com/courses/javascript/lessons/library).
