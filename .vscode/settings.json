@@ -1,6 +1,14 @@
 {
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+      "source.fixAll.eslint": true
   },
-  "eslint.validate": ["javascript", "css", "html"]
+  "eslint.validate": [
+    "javascript"
+  ],
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "html.format.indentInnerHtml": true,
+  "typescript.format.semicolons": "insert",
+  "prettier.enableDebugLogs": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
 }

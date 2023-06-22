@@ -15,7 +15,7 @@ const titleError = document.getElementById("title-error");
 // Data Structure and objects
 
 // Initialize blank library
-var myLibrary = [];
+const myLibrary = [];
 
 // Object constructor for new book obj
 function Book(id, title, author, pages, readStatus) {
@@ -27,19 +27,18 @@ function Book(id, title, author, pages, readStatus) {
   this.info = function () {
     if (readStatus) {
       return `${this.title} by ${this.author} has ${this.pages} and has been read`;
-    } else {
-      return `${this.title} by ${this.author} has ${this.pages} and is NOT read yet`;
     }
+    return `${this.title} by ${this.author} has ${this.pages} and is NOT read yet`;
   };
 }
 
 // Obtain form submission data
 function getBookFromInput() {
-  let bookId = myLibrary.length;
+  const bookId = myLibrary.length;
   const title = document.getElementById("title").value;
   const author = document.getElementById("author").value;
   const pages = document.getElementById("pages").value;
-  let isRead = document.getElementById("is-read").checked;
+  const isRead = document.getElementById("is-read").checked;
   return new Book(bookId, title, author, pages, isRead);
 }
 
@@ -95,7 +94,7 @@ function deleteCard(e) {
 function updateLibrary(bookId) {
   for (let i = +bookId; i < myLibrary.length; i++) {
     myLibrary[i].id = i;
-    let tempCard = document.getElementById(`${i + 1}`);
+    const tempCard = document.getElementById(`${i + 1}`);
     tempCard.setAttribute("id", `${i}`);
   }
 }
@@ -149,10 +148,10 @@ function addBook(e) {
       title.classList.add("error");
       e.preventDefault();
       return;
-    } else {
-      titleError.textContent = "";
-      title.classList.remove("error");
     }
+    titleError.textContent = "";
+    title.classList.remove("error");
+
     myLibrary.push(newBook);
     makeNewCard(newBook, myLibrary);
     e.preventDefault();
