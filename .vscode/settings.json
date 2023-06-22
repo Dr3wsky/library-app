@@ -1,14 +1,12 @@
 {
   "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true
+    "source.fixAll.eslint": true
   },
-  "eslint.validate": [
-    "javascript"
-  ],
+  "eslint.validate": ["javascript"],
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "html.format.indentInnerHtml": true,
   "typescript.format.semicolons": "insert",
   "prettier.enableDebugLogs": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
 }
