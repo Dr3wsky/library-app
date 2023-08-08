@@ -59,9 +59,7 @@ function makeNewCard(book) {
   author.classList.add("book-info", "author");
   pages.classList.add("book-info", "pages");
   readBtn.classList.add("btn", "book-info", "btn-read");
-  readBtn.addEventListener("click", toggleRead);
   delBtn.classList.add("btn", "book-info", "btn-del");
-  delBtn.addEventListener("click", deleteCard);
 
   // insert content
   title.textContent = `${book.title}`;
@@ -101,7 +99,7 @@ function updateLibrary(bookId) {
 
 function checkDuplicate(newTitle) {
   return myLibrary.some(
-    (book) => book.title.toLowerCase() === newTitle.toLowerCase()
+    (book) => book.title.toLowerCase() === newTitle.toLowerCase(),
   );
 }
 
@@ -167,3 +165,5 @@ submitBtn.onclick = addBook;
 addBookBtn.onclick = openBookModal;
 window.onkeyup = checkKeyPress;
 overlay.onclick = closeModal;
+delBtn.addEventListener("click", deleteCard);
+readBtn.addEventListener("click", toggleRead);
