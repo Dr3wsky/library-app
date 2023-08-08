@@ -20,7 +20,7 @@ This project is from the Odin Project's Full Stack Develloper [curriculum](https
 
 - ES Lint + Airbnb JavaScript style guide.
 - Prettier & ESLint configuration extension.
-- Javascript objects
+- Javascript objects & Classes
 - CSS Grid
 
 #### **SKills & Learnings:**
@@ -31,4 +31,5 @@ This project is from the Odin Project's Full Stack Develloper [curriculum](https
 - Implemented **HTML5 form elements** and first-time using a **_checkbox_** element.
 - Improved CSS modularity by using ':root' variables for colours, spacing and font names.
 - Indroduced use of **JavaScript _objects_** to store book information and toggle read status.
+- Modified *objects* as *classes* in refactoring code. 
 - Deepended knowledge of **Javascript** logic and syntax through use of both **function _expressions_** and **_declarations_** dependent on use-case.
